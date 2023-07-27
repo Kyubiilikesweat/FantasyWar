@@ -1,0 +1,4 @@
+name: FantasyWar
+version: '${project.version}'
+main: kyubii.de.fantasywar.FantasyWar
+api-version: '1.20'
