@@ -8,10 +8,10 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class chatclear implements CommandExecutor {
+public class ChatclearCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        if (!sender.hasPermission("chatclear.use")) {
+        if (!sender.hasPermission(FantasyWar.getChatclearPerm())) {
             sender.sendMessage(FantasyWar.getNoPerm());
         } else {
             for (int i = 0; i < 1005; ++i) {
@@ -21,7 +21,6 @@ public class chatclear implements CommandExecutor {
                     }
                 }
             }
-
             Bukkit.broadcastMessage(FantasyWar.getSystemPrefix() + "§7Der Chat wurde von §e" + sender.getName() + " §7geleert.");
             return true;
         }

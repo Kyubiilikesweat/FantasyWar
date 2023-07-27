@@ -1,6 +1,6 @@
-package de.group.fwsystemcb.commands;
+package kyubii.de.fantasywar.commands;
 
-import de.group.fwsystemcb.Main;
+import kyubii.de.fantasywar.FantasyWar;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
@@ -11,14 +11,14 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.SkullMeta;
 
 public class KopfCommand implements CommandExecutor {
-    @Override
+    @Override @SuppressWarnings("all")
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if (!(sender instanceof Player)){
-            sender.sendMessage(Main.noplayer);
+            sender.sendMessage(FantasyWar.getNoPlayer());
         }else {
             Player p = (Player) sender;
             Player target = Bukkit.getPlayer(args[0]);
-            if (p.hasPermission("kopf.use")){
+            if (p.hasPermission(FantasyWar.getKopfPerm())){
                 if (args.length == 1){
                     ItemStack is = new ItemStack(Material.LEGACY_SKULL_ITEM, 1 , (short)3);
                     SkullMeta im  = (SkullMeta)is.getItemMeta();
@@ -28,9 +28,9 @@ public class KopfCommand implements CommandExecutor {
                     p.getInventory().addItem(new ItemStack[] {is});
                     p.updateInventory();
                     return true;
-                }else p.sendMessage(Main.prefix + "§cUsage: /kopf <Player>");
+                }else p.sendMessage(FantasyWar.getSystemPrefix() + "§cUsage: /kopf <Player>");
                 return true;
-            }else p.sendMessage(Main.noperm);
+            }else p.sendMessage(FantasyWar.getNoPerm());
         }
         return false;
     }

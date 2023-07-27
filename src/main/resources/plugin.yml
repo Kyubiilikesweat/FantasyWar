@@ -1,4 +1,27 @@
 name: FantasyWar
 version: '${project.version}'
 main: kyubii.de.fantasywar.FantasyWar
+author: Kyubiilikesweat
 api-version: '1.20'
+commands:
+  Sign:
+    permission: itemsign.use
+  Broadcast:
+    aliases: bc
+    permission: broadcast.use
+  Chatclear:
+    aliases: cc
+    permission: chatclear.use
+  Kopf:
+    aliases: [skull, head]
+    permission: kopf.use
+  Playerwarp:
+    aliases: pw
+  Createplayerwarp:
+    aliases: createpw
+  Deleteplayerwarp:
+    aliases: deletepw
+  Playerwarpinfo:
+    aliases: pwinfo
+    permission: playerwarp.bypass
+
