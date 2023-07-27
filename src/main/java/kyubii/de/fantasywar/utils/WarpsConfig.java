@@ -7,7 +7,7 @@ import org.bukkit.configuration.file.YamlConfiguration;
 import java.io.File;
 import java.io.IOException;
 
-public class WarpConfig {
+public class WarpsConfig {
     private static File file;
     private static FileConfiguration customFile;
 
