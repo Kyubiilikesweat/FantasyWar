@@ -20,10 +20,10 @@ public class PlayerwarpInfoCommand implements CommandExecutor, TabCompleter {
         }
         Player player = (Player) sender;
         if (!(args.length == 1)){
-            player.sendMessage(FantasyWar.getSystemPrefix() + "Benutze §e/playerwarpinfo §7[§9Warp§7]");
+            player.sendMessage(FantasyWar.getSystemPrefix() + "Benutze §e/fantasywarpinfo §7[§9Warp§7]");
             return true;
         }
-        if (!player.hasPermission("playerwarp.bypass")){
+        if (!player.hasPermission("fantasywarp.bypass")){
             player.sendMessage(FantasyWar.getNoPerm());
             return true;
         }

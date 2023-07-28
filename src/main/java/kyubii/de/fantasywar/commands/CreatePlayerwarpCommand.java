@@ -24,7 +24,7 @@ public class CreatePlayerwarpCommand implements CommandExecutor {
         Location location = player.getLocation();
 
         if (!(args.length == 1)) {
-            player.sendMessage(FantasyWar.getSystemPrefix() + "Benutze §e/createplayerwarp §7[§9Warp§7]");
+            player.sendMessage(FantasyWar.getSystemPrefix() + "Benutze §e/createfantasywarp §7[§9Warp§7]");
             return true;
         }
         String warp = args[0];
@@ -39,9 +39,9 @@ public class CreatePlayerwarpCommand implements CommandExecutor {
         }
         int warpCount = warpUtils.getWarpCount(player.getUniqueId());
         if (warpCount == 3){
-            if (!player.hasPermission("playerwarp.bypass")) {
+            if (!player.hasPermission("fantasywarp.bypass")) {
                 player.sendMessage(FantasyWar.getSystemPrefix() + "Du kannst maximal §93 §7Warps erstellen§8." +
-                        " §7Benutze §e/deleteplayerwarp §7[§9Warp§7] um einen Warp von dir zu entfernen" );
+                        " §7Benutze §e/deletefantasywarp §7[§9Warp§7] um einen Warp von dir zu entfernen" );
                 return true;
             }
         }
@@ -49,7 +49,7 @@ public class CreatePlayerwarpCommand implements CommandExecutor {
         if (warp.equalsIgnoreCase("Hs") || warp.equalsIgnoreCase("Hurensohn") || warp.equalsIgnoreCase("Nigga") || warp.equalsIgnoreCase("Hs") || warp.equalsIgnoreCase("Schwanz") || warp.equalsIgnoreCase("Hakenkreuz") || warp.equalsIgnoreCase("Bastard")){
             player.sendMessage(FantasyWar.getSystemPrefix() + "§7Diese Warp-Namen werden nicht geduldet. Der Versuch, diesen Warp zu erstellen wurde einem Teammitglied gemeldet.");
             for (Player all : Bukkit.getOnlinePlayers()){
-                if (all.hasPermission("playerwarp.bypass")){
+                if (all.hasPermission("fantasywarp.bypass")){
                     all.sendMessage(FantasyWar.getSystemPrefix() + "Der Spieler §c" + player.getDisplayName() + " §7Hat versucht einen §4§lunangemessenen §7Warp zu erstellen§8+3: §9" + warp);
                 }
             }

@@ -43,10 +43,10 @@ public final class FantasyWar extends JavaPlugin {
         getCommand("Broadcast").setExecutor(new BroadcastCommand());
         getCommand("Kopf").setExecutor(new KopfCommand());
         getCommand("Chatclear").setExecutor(new ChatclearCommand());
-        getCommand("Playerwarp").setExecutor(new PlayerwarpCommand());
-        getCommand("Createplayerwarp").setExecutor(new CreatePlayerwarpCommand());
-        getCommand("Deleteplayerwarp").setExecutor(new DeletewarpCommand());
-        getCommand("Playerwarpinfo").setExecutor(new PlayerwarpInfoCommand());
+        getCommand("Fantasywarp").setExecutor(new PlayerwarpCommand());
+        getCommand("Createfantasywarp").setExecutor(new CreatePlayerwarpCommand());
+        getCommand("Deletefantasywarp").setExecutor(new DeletewarpCommand());
+        getCommand("Fantasywarpinfo").setExecutor(new PlayerwarpInfoCommand());
     }
     public void loadListeners() {
         Bukkit.getPluginManager().registerEvents(new PlayerjoinHandler(), this);
@@ -76,7 +76,7 @@ public final class FantasyWar extends JavaPlugin {
     public static String getChatclearPerm() {return "chatclear.use";}
     public static String getKopfPerm() {return "kopf.use";}
     public static String getItemsignPerm() {return "itemsign.use";}
-    public static String getCreatePlayerWarpPerm() {return "playerwarp.set";}
+
 
     public static void createTable() {
         try {

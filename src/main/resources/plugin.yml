@@ -15,13 +15,13 @@ commands:
   Kopf:
     aliases: [skull, head]
     permission: kopf.use
-  Playerwarp:
-    aliases: pw
-  Createplayerwarp:
-    aliases: createpw
-  Deleteplayerwarp:
-    aliases: deletepw
-  Playerwarpinfo:
-    aliases: pwinfo
-    permission: playerwarp.bypass
+  Fantasywarp:
+    aliases: fw
+  Createfantasywarp:
+    aliases: createfw
+  Deletefantasywarp:
+    aliases: deletefw
+  Fantasywarpinfo:
+    aliases: fwinfo
+    permission: fantasywarp.bypass
 

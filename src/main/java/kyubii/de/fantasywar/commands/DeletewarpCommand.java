@@ -20,7 +20,7 @@ public class DeletewarpCommand implements CommandExecutor, TabCompleter {
         }
         Player player = (Player) sender;
         if (!(args.length == 1)){
-            player.sendMessage(FantasyWar.getSystemPrefix() + "Benutze §e/deleteplayerwarp §7[§9Warp§7]");
+            player.sendMessage(FantasyWar.getSystemPrefix() + "Benutze §e/deletefantasywarp §7[§9Warp§7]");
             return true;
         }
         String warp = args[0];
@@ -29,7 +29,7 @@ public class DeletewarpCommand implements CommandExecutor, TabCompleter {
             return true;
         }
         if (!warpUtils.isOwnerOfWarp(player.getUniqueId(), warp)){
-            if (!player.hasPermission("playerwarp.bypass")) {
+            if (!player.hasPermission("fantasywarp.bypass")) {
                 player.sendMessage(FantasyWar.getNoPerm());
                 return true;
             }
