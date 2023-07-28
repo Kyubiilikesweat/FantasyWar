@@ -1,6 +1,6 @@
 package kyubii.de.fantasywar.listeners;
 
-import kyubii.de.fantasywar.commands.PlayerwarpCommand;
+import kyubii.de.fantasywar.commands.FantasywarpCommand;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -12,8 +12,8 @@ public class PlayerDamageListener implements Listener {
     public void onPlayerDamage(EntityDamageByEntityEvent event){
         if (event.getEntity() instanceof Player){
             Player player = (Player) event.getEntity();
-            if (PlayerwarpCommand.warpCooldownMap.containsKey(player)) {
-                if (PlayerwarpCommand.warpCooldownMap.get(player)) {
+            if (FantasywarpCommand.warpCooldownMap.containsKey(player)) {
+                if (FantasywarpCommand.warpCooldownMap.get(player)) {
                     event.setCancelled(true);
                 }
             }
@@ -22,8 +22,8 @@ public class PlayerDamageListener implements Listener {
     @EventHandler
     public void onFallDamage(EntityDamageEvent event){
         Player player = (Player) event.getEntity();
-        if (PlayerwarpCommand.warpCooldownMap.containsKey(player)) {
-            if (PlayerwarpCommand.warpCooldownMap.get(player)) {
+        if (FantasywarpCommand.warpCooldownMap.containsKey(player)) {
+            if (FantasywarpCommand.warpCooldownMap.get(player)) {
                 event.setCancelled(true);
             }
         }

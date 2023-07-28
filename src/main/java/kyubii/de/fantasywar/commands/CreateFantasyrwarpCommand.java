@@ -9,7 +9,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class CreatePlayerwarpCommand implements CommandExecutor {
+public class CreateFantasyrwarpCommand implements CommandExecutor {
     PlayerWarpUtils warpUtils = new PlayerWarpUtils();
 
     @Override

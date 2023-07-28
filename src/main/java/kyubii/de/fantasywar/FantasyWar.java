@@ -43,10 +43,10 @@ public final class FantasyWar extends JavaPlugin {
         getCommand("Broadcast").setExecutor(new BroadcastCommand());
         getCommand("Kopf").setExecutor(new KopfCommand());
         getCommand("Chatclear").setExecutor(new ChatclearCommand());
-        getCommand("Fantasywarp").setExecutor(new PlayerwarpCommand());
-        getCommand("Createfantasywarp").setExecutor(new CreatePlayerwarpCommand());
+        getCommand("Fantasywarp").setExecutor(new FantasywarpCommand());
+        getCommand("Createfantasywarp").setExecutor(new CreateFantasyrwarpCommand());
         getCommand("Deletefantasywarp").setExecutor(new DeletewarpCommand());
-        getCommand("Fantasywarpinfo").setExecutor(new PlayerwarpInfoCommand());
+        getCommand("Fantasywarpinfo").setExecutor(new FantasywarpInfoCommand());
     }
     public void loadListeners() {
         Bukkit.getPluginManager().registerEvents(new PlayerjoinHandler(), this);

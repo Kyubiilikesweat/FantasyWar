@@ -10,7 +10,7 @@ import org.bukkit.entity.Player;
 
 import java.util.List;
 
-public class PlayerwarpInfoCommand implements CommandExecutor, TabCompleter {
+public class FantasywarpInfoCommand implements CommandExecutor, TabCompleter {
     PlayerWarpUtils warpUtils = new PlayerWarpUtils();
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
