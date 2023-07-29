@@ -20,16 +20,21 @@ public final class FantasyWar extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        instance = this;
-        getConfig().options().copyDefaults(true);
-        saveConfig();
-        loadConfig();
-        loadMySQL();
-        createTable();
-        loadCommands();
-        loadListeners();
+        if (Bukkit.getPluginManager().isPluginEnabled("PlaceholderAPI")) {
+            instance = this;
+            getConfig().options().copyDefaults(true);
+            saveConfig();
+            loadConfig();
+            loadMySQL();
+            createTable();
+            loadCommands();
+            loadListeners();
 
-        Bukkit.getConsoleSender().sendMessage("§3§lFANTASYWAR-SYSTEM §7- §8Wurde §aaktiviert");
+            Bukkit.getConsoleSender().sendMessage("§3§lFANTASYWAR-SYSTEM §7- §8Wurde §aaktiviert");
+        }else {
+            Bukkit.getConsoleSender().sendMessage("§cPlaceholderAPI wurde nicht gefunden!");
+            Bukkit.getPluginManager().disablePlugin(this);
+        }
     }
 
     @Override
