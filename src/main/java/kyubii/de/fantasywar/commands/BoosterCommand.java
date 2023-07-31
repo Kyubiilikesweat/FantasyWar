@@ -78,8 +78,7 @@ public class BoosterCommand implements CommandExecutor {
                         if (DropB != 3) {
                             BoosterClass.RemoveBooster(p, 1);
                             DropB = DropB + 1;
-                            for (int i = 0; i < 100; i = i + 1)
-                                Bukkit.broadcastMessage(" ");
+                            
                             Bukkit.broadcastMessage("§e" + p.getName() + " §7hat für die Community den §e§lDrop-Booster §7für §e30 Minuten §aaktiviert!");
                             Bukkit.broadcastMessage("§eMultiplikator§8: §a§l" + DropB + "x");
                             Bukkit.broadcastMessage(" ");
@@ -88,8 +87,7 @@ public class BoosterCommand implements CommandExecutor {
                             Bukkit.getScheduler().runTaskLater((Plugin) FantasyWar.getInstance(), new Runnable() {
                                 public void run() {
                                     BoosterCommand.DropB = DropB - 1;
-                                    for (int i = 0; i < 10; i = i + 1)
-                                        Bukkit.broadcastMessage("");
+                                    
                                     Bukkit.broadcastMessage(String.valueOf("§cEin Drop-Booster ist abgelaufen!"));
                                     Bukkit.broadcastMessage("§eMultiplikator§8: §a§l" + DropB + "x");
                                     for (Player all : Bukkit.getOnlinePlayers())
@@ -107,8 +105,7 @@ public class BoosterCommand implements CommandExecutor {
                         if (XPB != 3) {
                             BoosterClass.RemoveBooster(p, 1);
                             XPB = XPB + 1;
-                            for (int i = 0; i < 100; i = i + 1)
-                                Bukkit.broadcastMessage(" ");
+                            
                             Bukkit.broadcastMessage("§e" + p.getName() + " §7hat für die Community den §e§lXP-Booster §7für §e30 Minuten §aaktiviert!");
                             Bukkit.broadcastMessage("§eMultiplikator§8: §a§l" + XPB + "x");
                             for (Player all : Bukkit.getOnlinePlayers())
@@ -116,8 +113,7 @@ public class BoosterCommand implements CommandExecutor {
                             Bukkit.getScheduler().runTaskLater((Plugin) FantasyWar.getInstance(), new Runnable() {
                                 public void run() {
                                     BoosterCommand.XPB = XPB - 1;
-                                    for (int i = 0; i < 10; i = i + 1)
-                                        Bukkit.broadcastMessage("");
+                                    
                                     Bukkit.broadcastMessage(String.valueOf("§cEin XP-Booster ist abgelaufen!"));
                                     Bukkit.broadcastMessage("§eMultiplikator§8: §a§l" + XPB + "x");
                                     for (Player all : Bukkit.getOnlinePlayers())
@@ -135,8 +131,7 @@ public class BoosterCommand implements CommandExecutor {
                         if (FlyB == 0) {
                             BoosterClass.RemoveBooster(p, 1);
                             FlyB = XPB + 1;
-                            for (int i = 0; i < 100; i = i + 1)
-                                Bukkit.broadcastMessage(" ");
+                            
                             Bukkit.broadcastMessage("§e" + p.getName() + " §7hat für die Community den §e§lFly-Booster §7für §e10 Minuten §aaktiviert!");
                             Bukkit.broadcastMessage("§eMultiplikator§8: §a§l" + FlyB + "x");
                             for (Player all : Bukkit.getOnlinePlayers()) {
@@ -191,8 +186,7 @@ public class BoosterCommand implements CommandExecutor {
                         if (MobB != 3) {
                             BoosterClass.RemoveBooster(p, 1);
                             MobB = MobB + 1;
-                            for (int i = 0; i < 100; i = i + 1)
-                                Bukkit.broadcastMessage(" ");
+                            
                             Bukkit.broadcastMessage("§e" + p.getName() + " §7hat für die Community den §e§lMob-Booster §7für §e30 Minuten §aaktiviert!");
                             Bukkit.broadcastMessage("§eMultiplikator: §a§l" + MobB + "x");
                             for (Player all : Bukkit.getOnlinePlayers())
