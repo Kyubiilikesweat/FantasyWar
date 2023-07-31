@@ -269,7 +269,7 @@ public class BoosterCommand implements CommandExecutor {
                         if (args[2].matches("[0-9]")) {
                             p.sendMessage(FantasyWar.getSystemPrefix() + String.valueOf("§7Du hast dem Spieler §e" + tar.getName() + " §6" + args[2] + " §7Booster gegeben."));
                             tar.sendMessage(FantasyWar.getSystemPrefix() + String.valueOf("§e" + p.getName() + " §7hat dir §6" + args[2] + " §7Booster gegeben."));
-                            BoosterClass.AddBooster(tar, Integer.parseInt(args[2]));
+                            BoosterClass.AddBooster(tar, Integer.valueOf(args[2]));
                         }else p.sendMessage(FantasyWar.getSystemPrefix() + String.valueOf("§cBitte gebe eine Zahl an."));
                     }else p.sendMessage(FantasyWar.getSystemPrefix() + String.valueOf("§cDer Spieler ist nicht online!"));
                 }else p.sendMessage(FantasyWar.getNoPerm());
