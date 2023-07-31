@@ -25,5 +25,4 @@ commands:
   Fantasywarpinfo:
     aliases: fwinfo
     permission: fantasywarp.bypass
-  Booster:
 

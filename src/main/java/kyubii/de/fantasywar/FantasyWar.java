@@ -1,8 +1,6 @@
 package kyubii.de.fantasywar;
 
 import kyubii.de.fantasywar.commands.*;
-import kyubii.de.fantasywar.listeners.BoosterListener;
-import kyubii.de.fantasywar.listeners.PlayerjoinHandler;
 import kyubii.de.fantasywar.utils.MySQLConnect;
 import kyubii.de.fantasywar.utils.WarpsConfig;
 import org.bukkit.Bukkit;
@@ -10,7 +8,6 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.util.PriorityQueue;
 
 /*
 Author - Kyubiilikesweat
@@ -41,7 +38,6 @@ public final class FantasyWar extends JavaPlugin {
 
     @SuppressWarnings("all")
     public void loadCommands() {
-        getCommand("Booster").setExecutor(new BoosterCommand());
         getCommand("Sign").setExecutor(new SignCommand());
         getCommand("Broadcast").setExecutor(new BroadcastCommand());
         getCommand("Kopf").setExecutor(new KopfCommand());
@@ -52,7 +48,6 @@ public final class FantasyWar extends JavaPlugin {
         getCommand("Fantasywarpinfo").setExecutor(new FantasywarpInfoCommand());
     }
     public void loadListeners() {
-        Bukkit.getPluginManager().registerEvents(new BoosterListener(), this);
         //Bukkit.getPluginManager().registerEvents(new PlayerjoinHandler(), this);
     }
 
