@@ -1,6 +1,7 @@
 package kyubii.de.fantasywar;
 
 import kyubii.de.fantasywar.commands.*;
+import kyubii.de.fantasywar.listeners.BoosterListener;
 import kyubii.de.fantasywar.listeners.PlayerjoinHandler;
 import kyubii.de.fantasywar.utils.MySQLConnect;
 import kyubii.de.fantasywar.utils.WarpsConfig;
@@ -9,6 +10,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.PriorityQueue;
 
 /*
 Author - Kyubiilikesweat
@@ -18,23 +20,18 @@ public final class FantasyWar extends JavaPlugin {
     public static MySQLConnect mysql;
     private final WarpsConfig warpsConfig = new WarpsConfig();
 
-    @Override
+    @Override()
     public void onEnable() {
-        if (Bukkit.getPluginManager().isPluginEnabled("PlaceholderAPI")) {
-            instance = this;
-            getConfig().options().copyDefaults(true);
-            saveConfig();
-            loadConfig();
-            loadMySQL();
-            createTable();
-            loadCommands();
-            loadListeners();
+        instance = this;
+        getConfig().options().copyDefaults(true);
+        saveConfig();
+        loadConfig();
+        //loadMySQL();
+        //createTable();
+        loadCommands();
+        loadListeners();
 
-            Bukkit.getConsoleSender().sendMessage("§3§lFANTASYWAR-SYSTEM §7- §8Wurde §aaktiviert");
-        }else {
-            Bukkit.getConsoleSender().sendMessage("§cPlaceholderAPI wurde nicht gefunden!");
-            Bukkit.getPluginManager().disablePlugin(this);
-        }
+        Bukkit.getConsoleSender().sendMessage("§3§lFANTASYWAR-SYSTEM §7- §8Wurde §aaktiviert");
     }
 
     @Override
@@ -44,6 +41,7 @@ public final class FantasyWar extends JavaPlugin {
 
     @SuppressWarnings("all")
     public void loadCommands() {
+        getCommand("Booster").setExecutor(new BoosterCommand());
         getCommand("Sign").setExecutor(new SignCommand());
         getCommand("Broadcast").setExecutor(new BroadcastCommand());
         getCommand("Kopf").setExecutor(new KopfCommand());
@@ -54,7 +52,8 @@ public final class FantasyWar extends JavaPlugin {
         getCommand("Fantasywarpinfo").setExecutor(new FantasywarpInfoCommand());
     }
     public void loadListeners() {
-        Bukkit.getPluginManager().registerEvents(new PlayerjoinHandler(), this);
+        Bukkit.getPluginManager().registerEvents(new BoosterListener(), this);
+        //Bukkit.getPluginManager().registerEvents(new PlayerjoinHandler(), this);
     }
 
     public void loadConfig() {
@@ -73,6 +72,7 @@ public final class FantasyWar extends JavaPlugin {
     public static String getSystemPrefix() {return "§3§lSYSTEM §8» §7";}
     public static String getNoPerm() {return "§3§lSYSTEM §8» §cDazu hast du keine Rechte!";}
     public static String getNoPlayer() {return "§3§lSYSTEM §8» §cDu musst ein Spieler sein!";}
+
 
     /*
     Permissions
