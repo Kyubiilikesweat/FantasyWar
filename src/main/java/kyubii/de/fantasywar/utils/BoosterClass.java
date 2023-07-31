@@ -11,13 +11,13 @@ public class BoosterClass {
         File file = new File("plugins/FantasyWar/Booster.yml");
         YamlConfiguration cfg = YamlConfiguration.loadConfiguration(file);
         if (cfg.getString(p.getUniqueId() + ".Booster") == null) {
-            cfg.set(p.getUniqueId() + ".Booster", 0);
+            cfg.set(p.getUniqueId() + ".Booster", Integer.valueOf(0));
             try {
                 cfg.save(file);
             } catch (IOException ignored) {}
             int i = cfg.getInt(p.getUniqueId() + ".Booster");
             int total = i + anzahl;
-            cfg.set(p.getUniqueId() + ".Booster", total);
+            cfg.set(p.getUniqueId() + ".Booster", Integer.valueOf(total));
             try {
                 cfg.save(file);
             } catch (IOException ignored) {}
@@ -39,7 +39,7 @@ public class BoosterClass {
         YamlConfiguration cfg = YamlConfiguration.loadConfiguration(file);
         int i = 0;
         if (cfg.getString(p.getUniqueId() + ".Booster") == null) {
-
+            i = 0;
         } else {
             i = cfg.getInt(p.getUniqueId() + ".Booster");
         }
@@ -56,7 +56,7 @@ public class BoosterClass {
             } catch (IOException ignored) {}
             int i = cfg.getInt(p.getUniqueId() + ".Booster");
             int total = i + anzahl;
-            cfg.set(p.getUniqueId() + ".Booster", total);
+            cfg.set(p.getUniqueId() + ".Booster", Integer.valueOf(total));
             try {
                 cfg.save(file);
             } catch (IOException ignored) {}
@@ -66,10 +66,10 @@ public class BoosterClass {
             } catch (IOException ignored) {}
             int i = cfg.getInt(p.getUniqueId() + ".Booster");
             int total = i - anzahl;
-            cfg.set(p.getUniqueId() + ".Booster", total);
+            cfg.set(p.getUniqueId() + ".Booster", Integer.valueOf(total));
             try {
                 cfg.save(file);
-            } catch (IOException ignored) {}
+            } catch (IOException ioException) {}
         }
     }
 }
