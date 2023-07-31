@@ -14,23 +14,23 @@ public class BoosterClass {
             cfg.set(p.getUniqueId() + ".Booster", Integer.valueOf(0));
             try {
                 cfg.save(file);
-            } catch (IOException ignored) {}
+            } catch (IOException ioException) {}
             int i = cfg.getInt(p.getUniqueId() + ".Booster");
             int total = i + anzahl;
             cfg.set(p.getUniqueId() + ".Booster", Integer.valueOf(total));
             try {
                 cfg.save(file);
-            } catch (IOException ignored) {}
+            } catch (IOException ioException) {}
         } else {
             try {
                 cfg.save(file);
-            } catch (IOException ignored) {}
+            } catch (IOException ioException) {}
             int i = cfg.getInt(p.getUniqueId() + ".Booster");
             int total = i + anzahl;
             cfg.set(p.getUniqueId() + ".Booster", total);
             try {
                 cfg.save(file);
-            } catch (IOException ignored) {}
+            } catch (IOException ioException) {}
         }
     }
 
@@ -53,17 +53,17 @@ public class BoosterClass {
             cfg.set(p.getUniqueId() + ".Booster", 0);
             try {
                 cfg.save(file);
-            } catch (IOException ignored) {}
+            } catch (IOException ioException) {}
             int i = cfg.getInt(p.getUniqueId() + ".Booster");
             int total = i + anzahl;
             cfg.set(p.getUniqueId() + ".Booster", Integer.valueOf(total));
             try {
                 cfg.save(file);
-            } catch (IOException ignored) {}
+            } catch (IOException ioException) {}
         } else {
             try {
                 cfg.save(file);
-            } catch (IOException ignored) {}
+            } catch (IOException ioException) {}
             int i = cfg.getInt(p.getUniqueId() + ".Booster");
             int total = i - anzahl;
             cfg.set(p.getUniqueId() + ".Booster", Integer.valueOf(total));

@@ -103,8 +103,7 @@ public class BoosterCommand implements CommandExecutor {
                         if (XPB != 3) {
                             BoosterClass.RemoveBooster(p, 1);
                             XPB = XPB + 1;
-                            for (Integer i = Integer.valueOf(0); i.intValue() < 100; i = Integer.valueOf(i.intValue() + 1))
-                                Bukkit.broadcastMessage(" ");
+
                             Bukkit.broadcastMessage("§e" + p.getName() + " §7hat für die Community den §e§lXP-Booster §7für §e30 Minuten §aaktiviert!");
                             Bukkit.broadcastMessage("§eMultiplikator§8: §a§l" + XPB + "x");
                             for (Player all : Bukkit.getOnlinePlayers())
@@ -112,8 +111,6 @@ public class BoosterCommand implements CommandExecutor {
                             Bukkit.getScheduler().runTaskLater((Plugin) FantasyWar.getInstance(), new Runnable() {
                                 public void run() {
                                     BoosterCommand.XPB = XPB - 1;
-                                    for (Integer i = Integer.valueOf(0); i.intValue() < 10; i = Integer.valueOf(i.intValue() + 1))
-                                        Bukkit.broadcastMessage(" ");
                                     Bukkit.broadcastMessage(String.valueOf("§cEin XP-Booster ist abgelaufen!"));
                                     Bukkit.broadcastMessage("§eMultiplikator§8: §a§l" + XPB + "x");
                                     for (Player all : Bukkit.getOnlinePlayers())
@@ -131,8 +128,6 @@ public class BoosterCommand implements CommandExecutor {
                         if (FlyB == 0) {
                             BoosterClass.RemoveBooster(p, 1);
                             FlyB = XPB + 1;
-                            for (Integer i = Integer.valueOf(0); i.intValue() < 100; i = Integer.valueOf(i.intValue() + 1))
-                                Bukkit.broadcastMessage(" ");
                             Bukkit.broadcastMessage("§e" + p.getName() + " §7hat für die Community den §e§lFly-Booster §7für §e10 Minuten §aaktiviert!");
                             Bukkit.broadcastMessage("§eMultiplikator§8: §a§l" + FlyB + "x");
                             for (Player all : Bukkit.getOnlinePlayers()) {
@@ -153,8 +148,6 @@ public class BoosterCommand implements CommandExecutor {
                                             Bukkit.getScheduler().runTaskLater((Plugin) FantasyWar.getInstance(), new Runnable() {
                                                 public void run() {
                                                     FlyB = FlyB - 1;
-                                                    for (Integer i = Integer.valueOf(0); i.intValue() < 10; i = Integer.valueOf(i.intValue() + 1))
-                                                        Bukkit.broadcastMessage(" ");
                                                     Bukkit.broadcastMessage(String.valueOf("§cEin Fly-Booster ist abgelaufen!"));
                                                     Bukkit.broadcastMessage("§eMultiplikator§8: §a§l" + FlyB + "x");
                                                     Bukkit.broadcastMessage("§cDer Server Booster is beendet. Dein Flugmodus wurde deaktiviert");
@@ -184,8 +177,6 @@ public class BoosterCommand implements CommandExecutor {
                         if (MobB != 3) {
                             BoosterClass.RemoveBooster(p, 1);
                             MobB = MobB + 1;
-                            for (Integer i = Integer.valueOf(0); i.intValue() < 100; i = Integer.valueOf(i.intValue() + 1))
-                                Bukkit.broadcastMessage(" ");
                             Bukkit.broadcastMessage("§e" + p.getName() + " §7hat für die Community den §e§lMob-Booster §7für §e30 Minuten §aaktiviert!");
                             Bukkit.broadcastMessage("§eMultiplikator: §a§l" + MobB + "x");
                             for (Player all : Bukkit.getOnlinePlayers())
@@ -193,8 +184,6 @@ public class BoosterCommand implements CommandExecutor {
                             Bukkit.getScheduler().runTaskLater((Plugin) FantasyWar.getInstance(), new Runnable() {
                                 public void run() {
                                     MobB = MobB - 1;
-                                    for (Integer i = Integer.valueOf(0); i.intValue() < 10; i = Integer.valueOf(i.intValue() + 1))
-                                        Bukkit.broadcastMessage(" ");
                                     Bukkit.broadcastMessage(String.valueOf("§cEin §eMob-Booster §cist abgelaufen!"));
                                     Bukkit.broadcastMessage("§eMultiplikator: §a§l" + MobB + "x");
                                     for (Player all : Bukkit.getOnlinePlayers())
@@ -212,8 +201,6 @@ public class BoosterCommand implements CommandExecutor {
                         if (BreakB != 1) {
                             BoosterClass.RemoveBooster(p, 1);
                             BreakB = BreakB + 1;
-                            for (Integer i = Integer.valueOf(0); i.intValue() < 100; i = Integer.valueOf(i.intValue() + 1))
-                                Bukkit.broadcastMessage(" ");
                             Bukkit.broadcastMessage("§e" + p.getName() + " §7hat für die Community den §e§lBreak-Booster §7für §e30 Minuten §aaktiviert!");
                             Bukkit.broadcastMessage("§eMultiplikator: §a§l" + BreakB + "x");
                             for (Player all : Bukkit.getOnlinePlayers()) {
@@ -224,8 +211,6 @@ public class BoosterCommand implements CommandExecutor {
                             Bukkit.getScheduler().runTaskLater( FantasyWar.getInstance(), new Runnable() {
                                 public void run() {
                                     BreakB = BreakB - 1;
-                                    for (Integer i = Integer.valueOf(0); i.intValue() < 10; i = Integer.valueOf(i.intValue() + 1))
-                                        Bukkit.broadcastMessage(" ");
                                     Bukkit.broadcastMessage(String.valueOf("§cEin §eBreak-Booster §cist abgelaufen!"));
                                     Bukkit.broadcastMessage("§eMultiplikator: §a§l" + BreakB + "x");
                                     for (Player all : Bukkit.getOnlinePlayers())
@@ -243,8 +228,6 @@ public class BoosterCommand implements CommandExecutor {
                         if (KHungerB != 1) {
                             BoosterClass.RemoveBooster(p, 1);
                             KHungerB = KHungerB + 1;
-                            for (Integer i = Integer.valueOf(0); i.intValue() < 100; i = Integer.valueOf(i.intValue() + 1))
-                                Bukkit.broadcastMessage(" ");
                             Bukkit.broadcastMessage("§e" + p.getName() + " §7hat für die Community den §e§lKeinHunger-Booster §7für §e30 Minuten §aaktiviert!");
                             Bukkit.broadcastMessage("§eMultiplikator: §a§l" + KHungerB + "x");
                             for (Player all : Bukkit.getOnlinePlayers()) {
@@ -255,8 +238,6 @@ public class BoosterCommand implements CommandExecutor {
                             Bukkit.getScheduler().runTaskLater((Plugin) FantasyWar.getInstance(), new Runnable() {
                                 public void run() {
                                     KHungerB = KHungerB - 1;
-                                    for (Integer i = Integer.valueOf(0); i.intValue() < 10; i = Integer.valueOf(i.intValue() + 1))
-                                        Bukkit.broadcastMessage(" ");
                                     Bukkit.broadcastMessage(String.valueOf("§cEin §eKeinHunger-Booster §cist abgelaufen!"));
                                     Bukkit.broadcastMessage("§eMultiplikator: §a§l" + KHungerB + "x");
                                     for (Player all : Bukkit.getOnlinePlayers()) {
@@ -288,11 +269,11 @@ public class BoosterCommand implements CommandExecutor {
                         if (args[2].matches("[0-9]")) {
                             p.sendMessage(FantasyWar.getSystemPrefix() + String.valueOf("§7Du hast dem Spieler §e" + tar.getName() + " §6" + args[2] + " §7Booster gegeben."));
                             tar.sendMessage(FantasyWar.getSystemPrefix() + String.valueOf("§e" + p.getName() + " §7hat dir §6" + args[2] + " §7Booster gegeben."));
-                            BoosterClass.AddBooster(tar, Integer.valueOf(args[2]).intValue());
+                            BoosterClass.AddBooster(tar, Integer.parseInt(args[2]));
                         }else p.sendMessage(FantasyWar.getSystemPrefix() + String.valueOf("§cBitte gebe eine Zahl an."));
                     }else p.sendMessage(FantasyWar.getSystemPrefix() + String.valueOf("§cDer Spieler ist nicht online!"));
                 }else p.sendMessage(FantasyWar.getNoPerm());
-            }else
+                }else
                     p.sendMessage(FantasyWar.getSystemPrefix() + String.valueOf("§cBenutze: §e/booster <Help/Erfahrung/Drops/Fliegen/Mobs/Hunger/give> <Spieler> <Anzahl>"));
             }
         }
