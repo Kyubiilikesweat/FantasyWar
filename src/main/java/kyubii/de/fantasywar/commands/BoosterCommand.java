@@ -272,7 +272,7 @@ public class BoosterCommand implements CommandExecutor {
                             BoosterClass.AddBooster(tar, Integer.valueOf(args[2]).intValue());
                         }else p.sendMessage(FantasyWar.getSystemPrefix() + String.valueOf("§cBitte gebe eine Zahl an."));
                     }else p.sendMessage(FantasyWar.getSystemPrefix() + String.valueOf("§cDer Spieler ist nicht online!"));
-                    }else p.sendMessage(FantasyWar.getNoPerm());
+                }else p.sendMessage(FantasyWar.getNoPerm());
                 }else
                     p.sendMessage(FantasyWar.getSystemPrefix() + String.valueOf("§cBenutze: §e/booster <Help/Erfahrung/Drops/Fliegen/Mobs/Hunger/give> <Spieler> <Anzahl>"));
             }
