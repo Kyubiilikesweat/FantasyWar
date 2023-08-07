@@ -32,11 +32,17 @@ public class SignCommand implements CommandExecutor {
             player.sendMessage(FantasyWar.getSystemPrefix() + "Du hast kein §9Item §7in der Hand");
             return true;
         }
-        if (!(args.length == 1)) {
+        if (args.length == 0) {
             player.sendMessage(FantasyWar.getSystemPrefix() + "Benutze §e/sign §7[§9Beschreibung§7]");
             return true;
         }
-        String description = args[0].replace("&", "§");
+        StringBuilder motdBuilder = new StringBuilder();
+        for (int i = 0; i < args.length; i++) {
+            if (i != 0)
+                motdBuilder.append(" ");
+            motdBuilder.append(args[i]);
+        }
+        String description = motdBuilder.toString().replace("&", "§");
 
         Date date = new Date(System.currentTimeMillis());
         SimpleDateFormat formatdayint = new SimpleDateFormat("dd");

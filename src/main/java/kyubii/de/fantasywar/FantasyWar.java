@@ -1,6 +1,7 @@
 package kyubii.de.fantasywar;
 
 import kyubii.de.fantasywar.commands.*;
+import kyubii.de.fantasywar.listeners.PlayerjoinHandler;
 import kyubii.de.fantasywar.utils.MySQLConnect;
 import kyubii.de.fantasywar.utils.WarpsConfig;
 import org.bukkit.Bukkit;
@@ -23,8 +24,8 @@ public final class FantasyWar extends JavaPlugin {
         getConfig().options().copyDefaults(true);
         saveConfig();
         loadConfig();
-        //loadMySQL();
-        //createTable();
+        loadMySQL();
+        createTable();
         loadCommands();
         loadListeners();
 
@@ -48,7 +49,7 @@ public final class FantasyWar extends JavaPlugin {
         getCommand("Fantasywarpinfo").setExecutor(new FantasywarpInfoCommand());
     }
     public void loadListeners() {
-        //Bukkit.getPluginManager().registerEvents(new PlayerjoinHandler(), this);
+        Bukkit.getPluginManager().registerEvents(new PlayerjoinHandler(), this);
     }
 
     public void loadConfig() {
