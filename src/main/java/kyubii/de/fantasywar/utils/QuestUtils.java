@@ -74,6 +74,7 @@ public class QuestUtils {
         config.get().set(uuid + "." + quest + ".exp", exp);
         config.save();
         config.reload();
+
     }
     public void setExpToLevelUp(UUID uuid, String quest, int exp){
         config.get().set(uuid + "." + quest + ".exptolvlup", exp);

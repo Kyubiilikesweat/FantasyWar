@@ -10,6 +10,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 /*
 Author - Kyubiilikesweat
@@ -98,6 +99,15 @@ public final class FantasyWar extends JavaPlugin {
             Bukkit.getConsoleSender().sendMessage("§cEs ist ein Fehler aufgetreten! Bitte kontaktiere einen Entwickler");
         }
     }
+    /*
+    Quest:
+    Miner
+    Laeufer
+    Farmer
+    Baumeister
+    Schwimmer
+     */
+
     public void loadMySQL() {
         mysql = new MySQLConnect(
                 getConfig().getString("MySQL." + "host"),

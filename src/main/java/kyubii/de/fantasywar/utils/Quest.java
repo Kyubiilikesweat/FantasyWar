@@ -1,5 +1,9 @@
 package kyubii.de.fantasywar.utils;
 
+import org.bukkit.Material;
+import org.bukkit.block.Block;
+import org.bukkit.block.BlockState;
+import org.bukkit.entity.Ageable;
 import org.bukkit.entity.Player;
 
 public class Quest {
@@ -32,4 +36,14 @@ public class Quest {
     }
 
 
+    private boolean Wheat(Block wheat){
+        if (wheat.getType() == Material.WHEAT){
+            BlockState blockState = wheat.getState();
+            if (blockState.getBlockData() instanceof Ageable){
+                Ageable ageable = (Ageable) blockState.getBlockData();
+                return ageable.getAge() == 3;
+            }
+        }
+        return false;
+    }
 }
