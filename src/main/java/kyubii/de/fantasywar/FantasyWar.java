@@ -1,9 +1,10 @@
 package kyubii.de.fantasywar;
 
 import kyubii.de.fantasywar.commands.*;
+import kyubii.de.fantasywar.configs.QuestConfig;
 import kyubii.de.fantasywar.listeners.PlayerjoinHandler;
 import kyubii.de.fantasywar.utils.MySQLConnect;
-import kyubii.de.fantasywar.utils.WarpsConfig;
+import kyubii.de.fantasywar.configs.WarpsConfig;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -17,6 +18,7 @@ public final class FantasyWar extends JavaPlugin {
     private static FantasyWar instance;
     public static MySQLConnect mysql;
     private final WarpsConfig warpsConfig = new WarpsConfig();
+    private final QuestConfig questConfig = new QuestConfig();
 
     @Override()
     public void onEnable() {
@@ -62,6 +64,8 @@ public final class FantasyWar extends JavaPlugin {
 
         warpsConfig.setUp();
         warpsConfig.save();
+        questConfig.setUp();
+        questConfig.save();
     }
 
     public static FantasyWar getInstance() {return instance;}

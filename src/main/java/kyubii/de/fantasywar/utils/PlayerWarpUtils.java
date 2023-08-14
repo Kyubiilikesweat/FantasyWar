@@ -1,6 +1,7 @@
 package kyubii.de.fantasywar.utils;
 
 import kyubii.de.fantasywar.FantasyWar;
+import kyubii.de.fantasywar.configs.WarpsConfig;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.OfflinePlayer;

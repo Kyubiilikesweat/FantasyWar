@@ -1,4 +1,4 @@
-package kyubii.de.fantasywar.utils;
+package kyubii.de.fantasywar.configs;
 
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
