@@ -1,20 +1,46 @@
 package kyubii.de.fantasywar.utils;
 
+import kyubii.de.fantasywar.FantasyWar;
 import kyubii.de.fantasywar.configs.QuestConfig;
+import org.bukkit.Bukkit;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.UUID;
 
 @SuppressWarnings("all")
 public class QuestUtils {
     QuestConfig config = new QuestConfig();
+    private static final Connection con = FantasyWar.mysql.getConnection();
 
-    public void createPlayer(UUID uuid){
+    /*public void createPlayer(UUID uuid){
         if (!playerExists(uuid)){
             createQuests(uuid, "mining");
         }
-    }
-    public boolean playerExists(UUID uuid){
-        return config.get().contains(uuid.toString());
+    } */
+    public boolean playerExists(UUID uuid, String quest){
+        Connection connection;
+        String update = "SELECT player_uuid FROM playerinfo WHERE player_uuid=?";
+        PreparedStatement p;
+        try {
+            connection = con;
+            p = connection.prepareStatement(update);
+            p.setString(1, uuid.toString());
+            ResultSet rs = p.executeQuery();
+            if(rs.next()){
+                return true;
+            }
+            p.execute();
+            p.close();
+        } catch (SQLException e) {
+            //Print out any exception while trying to prepare statement
+            Bukkit.getConsoleSender().sendMessage("§cEs ist ein Fehler aufgetreten! Bitte kontaktiere einen Entwickler");
+            e.printStackTrace();
+        }
+
+        return false;
     }
 
 

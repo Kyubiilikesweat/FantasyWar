@@ -37,7 +37,7 @@ public class MySQLUtils {
     public void createPlayer(String uuid){
         if(!playerExist(uuid)){
             Connection connection = null;
-            String update = "INSERT INTO playerinfo(player_uuid, warps) VALUES (?, ?)";
+            String update = "INSERT INTO playerinfo(player_uuid) VALUES (?)";
             PreparedStatement p = null;
             try {
                 connection = con;

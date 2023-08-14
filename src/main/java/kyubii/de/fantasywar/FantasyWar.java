@@ -31,6 +31,12 @@ public final class FantasyWar extends JavaPlugin {
         loadCommands();
         loadListeners();
 
+        /*try {
+            createQuestTable();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }**/
+
         Bukkit.getConsoleSender().sendMessage("§3§lFANTASYWAR-SYSTEM §7- §8Wurde §aaktiviert");
     }
 
