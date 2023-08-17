@@ -34,10 +34,12 @@ public class QuestMySQL {
     }
 
     public void addPlayer(UUID uuid) throws SQLException {
-        try (PreparedStatement stmt = FantasyWar.mysql.getConnection().prepareStatement(
-                "INSTERT INTO Quests (UUID) VALUES (?)")){
-            stmt.setString(1, uuid.toString());
-            stmt.executeUpdate();
+        if (!playerExists(uuid)) {
+            try (PreparedStatement stmt = FantasyWar.mysql.getConnection().prepareStatement(
+                    "INSERT INTO Quests (UUID) VALUES (?)")) {
+                stmt.setString(1, uuid.toString());
+                stmt.executeUpdate();
+            }
         }
     }
 
@@ -54,4 +56,61 @@ public class QuestMySQL {
         }
         return false;
     }
+
+    public void setExperience(UUID uuid, String quest, int exp) {
+        try {
+            PreparedStatement p = FantasyWar.mysql.getConnection().prepareStatement("UPDATE Quests SET Count" + quest.toUpperCase() + "=? WHERE UUID=?");
+            p.setString(2, uuid.toString());
+            p.setInt(1, exp);
+            p.execute();
+            p.close();
+
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
+    public int getExperience(UUID uuid, String quest){
+        try {
+            PreparedStatement p = FantasyWar.mysql.getConnection().prepareStatement("SELECT * FROM Quests WHERE UUID=?");
+            p.setString(1, uuid.toString());
+            ResultSet rs = p.executeQuery();
+            if (rs.next()){
+                return rs.getInt("Count" + quest.toUpperCase());
+            }
+
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+
+    public void setLevel(UUID uuid, String quest, int lvl) {
+        try {
+            PreparedStatement p = FantasyWar.mysql.getConnection().prepareStatement("UPDATE Quests SET " + quest.toUpperCase() + "=? WHERE UUID=?");
+            p.setString(2, uuid.toString());
+            p.setInt(1, lvl);
+            p.execute();
+            p.close();
+
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
+    public int getLevel(UUID uuid, String quest){
+        try {
+            PreparedStatement p = FantasyWar.mysql.getConnection().prepareStatement("SELECT * FROM Quests WHERE UUID=?");
+            p.setString(1, uuid.toString());
+            ResultSet rs = p.executeQuery();
+            if (rs.next()){
+                return rs.getInt(quest.toUpperCase());
+            }
+
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+
 }

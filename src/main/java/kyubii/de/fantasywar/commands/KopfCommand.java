@@ -1,8 +1,6 @@
 package kyubii.de.fantasywar.commands;
 
 import kyubii.de.fantasywar.FantasyWar;
-import kyubii.de.fantasywar.utils.Quest;
-import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;

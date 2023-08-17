@@ -25,4 +25,5 @@ commands:
   Fantasywarpinfo:
     aliases: fwinfo
     permission: fantasywarp.bypass
+  Werbung:
 

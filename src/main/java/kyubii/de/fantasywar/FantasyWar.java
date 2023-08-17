@@ -5,6 +5,8 @@ import kyubii.de.fantasywar.configs.QuestConfig;
 import kyubii.de.fantasywar.listeners.PlayerjoinHandler;
 import kyubii.de.fantasywar.utils.MySQLConnect;
 import kyubii.de.fantasywar.configs.WarpsConfig;
+import kyubii.de.fantasywar.utils.QuestMySQL;
+import kyubii.de.fantasywar.utils.WerbungMySQL;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -31,12 +33,18 @@ public final class FantasyWar extends JavaPlugin {
         createTable();
         loadCommands();
         loadListeners();
+        try {
+            QuestMySQL.createQuestTable();
 
-        /*try {
-            createQuestTable();
         } catch (SQLException e) {
-            e.printStackTrace();
-        }**/
+            throw new RuntimeException(e);
+        }
+        try {
+            WerbungMySQL.createWerbungTable();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
 
         Bukkit.getConsoleSender().sendMessage("§3§lFANTASYWAR-SYSTEM §7- §8Wurde §aaktiviert");
     }
@@ -74,6 +82,14 @@ public final class FantasyWar extends JavaPlugin {
         questConfig.setUp();
         questConfig.save();
     }
+    public void loadMySQL() {
+        mysql = new MySQLConnect(
+                getConfig().getString("MySQL." + "host"),
+                getConfig().getInt("MySQL." + "port"),
+                getConfig().getString("MySQL." + "database"),
+                getConfig().getString("MySQL." + "user"),
+                getConfig().getString("MySQL." + "password"));
+    }
 
     public static FantasyWar getInstance() {return instance;}
     public static String getSystemPrefix() {return "§3§lSYSTEM §8» §7";}
@@ -108,12 +124,5 @@ public final class FantasyWar extends JavaPlugin {
     Schwimmer
      */
 
-    public void loadMySQL() {
-        mysql = new MySQLConnect(
-                getConfig().getString("MySQL." + "host"),
-                getConfig().getInt("MySQL." + "port"),
-                getConfig().getString("MySQL." + "database"),
-                getConfig().getString("MySQL." + "user"),
-                getConfig().getString("MySQL." + "password"));
-    }
+
 }

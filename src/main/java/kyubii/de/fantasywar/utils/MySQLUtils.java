@@ -26,7 +26,6 @@ public class MySQLUtils {
             p.execute();
             p.close();
         } catch (SQLException e) {
-            //Print out any exception while trying to prepare statement
             Bukkit.getConsoleSender().sendMessage("§cEs ist ein Fehler aufgetreten! Bitte kontaktiere einen Entwickler");
             e.printStackTrace();
         }
@@ -44,7 +43,6 @@ public class MySQLUtils {
                 //Preparing statement - INSERT INTO...
                 p = connection.prepareStatement(update);
                 p.setString(1, uuid);
-                p.setInt(2, 0);
                 p.execute();
                 p.close();
             } catch (SQLException e) {

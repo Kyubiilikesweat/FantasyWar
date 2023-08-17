@@ -1,89 +1,26 @@
 package kyubii.de.fantasywar.utils;
 
-import kyubii.de.fantasywar.FantasyWar;
-import kyubii.de.fantasywar.configs.QuestConfig;
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
+import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.ItemStack;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.UUID;
 
 @SuppressWarnings("all")
 public class QuestUtils {
-    QuestConfig config = new QuestConfig();
-    private static final Connection con = FantasyWar.mysql.getConnection();
-
-    /*public void createPlayer(UUID uuid){
-        if (!playerExists(uuid)){
-            createQuests(uuid, "mining");
-        }
-    } */
-    public boolean playerExists(UUID uuid, String quest){
-        Connection connection;
-        String update = "SELECT player_uuid FROM playerinfo WHERE player_uuid=?";
-        PreparedStatement p;
-        try {
-            connection = con;
-            p = connection.prepareStatement(update);
-            p.setString(1, uuid.toString());
-            ResultSet rs = p.executeQuery();
-            if(rs.next()){
-                return true;
-            }
-            p.execute();
-            p.close();
-        } catch (SQLException e) {
-            //Print out any exception while trying to prepare statement
-            Bukkit.getConsoleSender().sendMessage("§cEs ist ein Fehler aufgetreten! Bitte kontaktiere einen Entwickler");
-            e.printStackTrace();
-        }
-
-        return false;
+    QuestMySQL utils = new QuestMySQL();
+    public Inventory getQuestInventory(UUID uuid){
+        Inventory inv;
+        inv = Bukkit.createInventory(null, 9, "§7Quests");
+        ItemStack minerItem = new ItemBuilder(Material.LEGACY_BOOK_AND_QUILL).setDisplayname("&9Miner-Quest").setLore(
+                        "§7" + utils.getLevel(uuid, "Miner") + "§8/§710 §6LEVEL",
+                        "§7" + utils.getExperience(uuid, "Minder") + "§8/§7" + getMinerExpToLvlUp(utils.getLevel(uuid, "Miner")) + " §6BLÖCKE")
+                .build();
+        inv.setItem(0, minerItem);
+        return inv;
     }
-
-
-    private void createQuests(UUID uuid, String quest){
-        config.get().set(uuid + "." + quest + ".level", 0);
-        config.get().set(uuid + "." + quest + ".exp", 0);
-        config.get().set(uuid + "." + quest + ".exptolvlup", 0);
-        config.get().set(uuid + "." + quest + ".reward", 100);
-        config.save();
-        config.reload();
-    }
-    public int getLevel(UUID uuid, String quest){
-        return config.get().getInt(uuid + "." + quest + ".level");
-    }
-
-    public int getExp(UUID uuid, String quest){
-        return config.get().getInt(uuid + "." + quest + ".exp");
-    }
-    public int getExpToLvlUp(UUID uuid, String quest){
-        return config.get().getInt(uuid + "." + quest + ".exptolvlup");
-    }
-    public int getReward(UUID uuid, String quest){
-        return config.get().getInt(uuid + "." + quest + ".reward");
-    }
-    public void setLevel(UUID uuid, String quest, int level){
-        config.get().set(uuid + "." + quest + ".level", level);
-        config.save();
-        config.reload();
-    }
-    public void setExp(UUID uuid, String quest, int exp){
-        config.get().set(uuid + "." + quest + ".exp", exp);
-        config.save();
-        config.reload();
-
-    }
-    public void setExpToLevelUp(UUID uuid, String quest, int exp){
-        config.get().set(uuid + "." + quest + ".exptolvlup", exp);
-        config.save();
-        config.reload();
-    }
-    public void setReward(UUID uuid, String quest, int reward){
-        config.get().set(uuid + "." + quest + ".reward", reward);
-        config.save();
-        config.reload();
+    public int getMinerExpToLvlUp(int lvl){
+        return lvl * 1250;
     }
 }
