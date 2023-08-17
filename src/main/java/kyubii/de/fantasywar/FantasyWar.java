@@ -64,6 +64,7 @@ public final class FantasyWar extends JavaPlugin {
         getCommand("Createfantasywarp").setExecutor(new CreateFantasyrwarpCommand());
         getCommand("Deletefantasywarp").setExecutor(new DeletewarpCommand());
         getCommand("Fantasywarpinfo").setExecutor(new FantasywarpInfoCommand());
+        getCommand("Werbung").setExecutor(new WerbungCommand());
     }
     public void loadListeners() {
         Bukkit.getPluginManager().registerEvents(new PlayerjoinHandler(), this);
