@@ -1,6 +1,9 @@
 package kyubii.de.fantasywar.utils;
 
 import kyubii.de.fantasywar.FantasyWar;
+import kyubii.de.fantasywar.events.QuestGetExperienceEvent;
+import kyubii.de.fantasywar.events.QuestLevelUpEvent;
+import org.bukkit.Bukkit;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -17,11 +20,11 @@ public class QuestMySQL {
 
             String createTableSQL = "CREATE TABLE IF NOT EXISTS Quests (" +
                     "UUID VARCHAR(36) PRIMARY KEY," +
-                    "Miner INT DEFAULT 0," +
-                    "Laeufer INT DEFAULT 0," +
-                    "Bauarbeiter INT DEFAULT 0," +
-                    "Farmer INT DEFAULT 0," +
-                    "Schwimmer INT DEFAULT 0," +
+                    "Miner INT DEFAULT 1," +
+                    "Laeufer INT DEFAULT 1," +
+                    "Bauarbeiter INT DEFAULT 1," +
+                    "Farmer INT DEFAULT 1," +
+                    "Schwimmer INT DEFAULT 1," +
                     "CountMiner INT DEFAULT 0," +
                     "CountLaeufer INT DEFAULT 0," +
                     "CountBauarbeiter INT DEFAULT 0," +
@@ -29,7 +32,6 @@ public class QuestMySQL {
                     "CountSchwimmer INT DEFAULT 0" +
                     ")";
             stmt.executeUpdate(createTableSQL);
-
         }
     }
 
@@ -64,7 +66,8 @@ public class QuestMySQL {
             p.setInt(1, exp);
             p.execute();
             p.close();
-
+            QuestGetExperienceEvent questGetExperienceEvent = new QuestGetExperienceEvent(Bukkit.getPlayer(uuid), quest, exp, getLevel(uuid, quest));
+            Bukkit.getPluginManager().callEvent(questGetExperienceEvent);
         } catch (SQLException e){
             e.printStackTrace();
         }
@@ -92,7 +95,8 @@ public class QuestMySQL {
             p.setInt(1, lvl);
             p.execute();
             p.close();
-
+            QuestLevelUpEvent questLevelUpEvent = new QuestLevelUpEvent(Bukkit.getPlayer(uuid), lvl, quest, getExperience(uuid, quest));
+            Bukkit.getPluginManager().callEvent(questLevelUpEvent);
         } catch (SQLException e){
             e.printStackTrace();
         }

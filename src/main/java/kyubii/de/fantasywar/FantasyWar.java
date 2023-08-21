@@ -13,6 +13,8 @@ import org.bukkit.plugin.java.JavaPlugin;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 /*
 Author - Kyubiilikesweat
@@ -22,6 +24,7 @@ public final class FantasyWar extends JavaPlugin {
     public static MySQLConnect mysql;
     private final WarpsConfig warpsConfig = new WarpsConfig();
     private final QuestConfig questConfig = new QuestConfig();
+    private static List<String> questsList = new ArrayList<>();
 
     @Override()
     public void onEnable() {
@@ -35,11 +38,6 @@ public final class FantasyWar extends JavaPlugin {
         loadListeners();
         try {
             QuestMySQL.createQuestTable();
-
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-        try {
             WerbungMySQL.createWerbungTable();
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -105,7 +103,14 @@ public final class FantasyWar extends JavaPlugin {
     public static String getChatclearPerm() {return "chatclear.use";}
     public static String getKopfPerm() {return "kopf.use";}
     public static String getItemsignPerm() {return "itemsign.use";}
-
+    public static List<String> getQuests() {
+        questsList.add("Miner");
+        questsList.add("Laeufer");
+        questsList.add("Farmer");
+        questsList.add("Bauarbeiter");
+        questsList.add("Schwimmer");
+        return questsList;
+    }
 
     public static void createTable() {
         try {
@@ -116,12 +121,13 @@ public final class FantasyWar extends JavaPlugin {
             Bukkit.getConsoleSender().sendMessage("§cEs ist ein Fehler aufgetreten! Bitte kontaktiere einen Entwickler");
         }
     }
+
     /*
     Quest:
     Miner
     Laeufer
     Farmer
-    Baumeister
+    Bauarbeiter
     Schwimmer
      */
 
