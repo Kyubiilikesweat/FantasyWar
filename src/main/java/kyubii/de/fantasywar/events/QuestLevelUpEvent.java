@@ -14,7 +14,8 @@ public class QuestLevelUpEvent extends Event implements Cancellable {
     private final int level;
     private final String quest;
     private final int exp;
-    public QuestLevelUpEvent(Player player, int level, String quest, int exp){
+
+    public QuestLevelUpEvent(Player player, int level, String quest, int exp) {
         this.isCancelled = false;
         this.player = player;
         this.level = level;
@@ -23,19 +24,22 @@ public class QuestLevelUpEvent extends Event implements Cancellable {
 
     }
 
-    public int getExp(){
+    public int getExp() {
         return exp;
     }
-    public String getQuest(){
+
+    public String getQuest() {
         return quest;
     }
 
-    public int getLevel(){
+    public int getLevel() {
         return level;
     }
-    public Player getPlayer(){
+
+    public Player getPlayer() {
         return player;
     }
+
     @Override
     public boolean isCancelled() {
         return isCancelled;
@@ -49,6 +53,10 @@ public class QuestLevelUpEvent extends Event implements Cancellable {
     @NotNull
     @Override
     public HandlerList getHandlers() {
+        return HANDLERS;
+    }
+
+    public static HandlerList getHandlerList() {
         return HANDLERS;
     }
 }

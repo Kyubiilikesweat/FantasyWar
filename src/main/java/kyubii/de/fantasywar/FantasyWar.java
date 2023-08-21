@@ -3,6 +3,7 @@ package kyubii.de.fantasywar;
 import kyubii.de.fantasywar.commands.*;
 import kyubii.de.fantasywar.configs.QuestConfig;
 import kyubii.de.fantasywar.listeners.PlayerjoinHandler;
+import kyubii.de.fantasywar.listeners.QuestsHandler;
 import kyubii.de.fantasywar.utils.MySQLConnect;
 import kyubii.de.fantasywar.configs.WarpsConfig;
 import kyubii.de.fantasywar.utils.QuestMySQL;
@@ -63,9 +64,11 @@ public final class FantasyWar extends JavaPlugin {
         getCommand("Deletefantasywarp").setExecutor(new DeletewarpCommand());
         getCommand("Fantasywarpinfo").setExecutor(new FantasywarpInfoCommand());
         getCommand("Werbung").setExecutor(new WerbungCommand());
+        getCommand("Quest").setExecutor(new QuestCommand());
     }
     public void loadListeners() {
         Bukkit.getPluginManager().registerEvents(new PlayerjoinHandler(), this);
+        Bukkit.getPluginManager().registerEvents(new QuestsHandler(), this);
     }
 
     public void loadConfig() {

@@ -28,33 +28,34 @@ public class QuestGetExperienceEvent extends Event implements Cancellable {
     public boolean isReadyToLvlUp(){
         boolean b = false;
         if (quest.equalsIgnoreCase("Miner")){
+            Bukkit.broadcastMessage("juwhefkseaf");
             int expToLvlUp = getMinerExpToLvlUp(level);
             if (exp >= expToLvlUp){
-                return true;
+                b = true;
             }
         }
         if (quest.equalsIgnoreCase("Laeufer")){
             int expToLvlUp = getLaeuferExpToLvlUp(level);
             if (exp >= expToLvlUp){
-                return true;
+                b = true;
             }
         }
         if (quest.equalsIgnoreCase("Farmer")){
             int expToLvlUp = getFarmerExpToLvlUp(level);
             if (exp >= expToLvlUp){
-                return true;
+                b = true;
             }
         }
         if (quest.equalsIgnoreCase("Bauarbeiter")){
             int expToLvlUp = getBauarbeiterExpToLvlUp(level);
             if (exp >= expToLvlUp){
-                return true;
+                b = true;
             }
         }
         if (quest.equalsIgnoreCase("Schwimmer")){
             int expToLvlUp = getSchwimmerExpToLvlUp(level);
             if (exp >= expToLvlUp){
-                return true;
+                b = true;
             }
         }
         return b;
@@ -89,20 +90,24 @@ public class QuestGetExperienceEvent extends Event implements Cancellable {
     public HandlerList getHandlers() {
         return HANDLERS;
     }
+    public static HandlerList getHandlerList(){
+        return HANDLERS;
+    }
 
     private int getMinerExpToLvlUp(int lvl){
-        return lvl * 500;
+        return lvl * 80;
     }
     private int getLaeuferExpToLvlUp(int lvl){
-        return lvl * 1500;
+        return lvl * 300;
     }
     private int getBauarbeiterExpToLvlUp(int lvl){
-        return lvl * 500;
+        return lvl * 100;
     }
     private int getFarmerExpToLvlUp(int lvl){
-        return lvl * 500;
+        return lvl * 70;
     }
     private int getSchwimmerExpToLvlUp(int lvl){
-        return lvl * 500;
+        return lvl * 150;
     }
+
 }
