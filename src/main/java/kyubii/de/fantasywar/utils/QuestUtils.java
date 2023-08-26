@@ -13,7 +13,7 @@ public class QuestUtils {
     public Inventory getQuestInventory(UUID uuid){
         Inventory inv = Bukkit.createInventory(null, 9, "§7Quests");
 
-        ItemStack minerItem = new ItemBuilder(Material.LEGACY_BOOK_AND_QUILL).setDisplayname("§9Miner-Quest").setLore(
+        ItemStack minerItem = new ItemBuilder(Material.WRITTEN_BOOK).setDisplayname("§9Miner-Quest").setLore(
                         "§7" + utils.getLevel(uuid, "Miner") + "§8/§710 §6LEVEL",
                         "§7" + utils.getExperience(uuid, "Miner") + "§8/§7" + getMinerExpToLvlUp(utils.getLevel(uuid, "Miner")) + " §6BLÖCKE",
                         "§8(§cINFO: Nur Gestein u.ä wird gezählt§8)")
@@ -34,11 +34,13 @@ public class QuestUtils {
                         "§7" + utils.getLevel(uuid, "Schwimmer") + "§8/§710 §6LEVEL",
                         "§7" + utils.getExperience(uuid, "Schwimmer") + "§8/§7" + getSchwimmerExpToLvlUp(utils.getLevel(uuid, "Schwimmer")) + " §6METER")
                 .build();
+        ItemStack CommingSoonItem = new ItemBuilder(Material.WRITTEN_BOOK).setDisplayname("§cCOMMING SOON...")
+                .build();
         inv.setItem(0, minerItem);
         inv.setItem(1, laeuferItem);
         inv.setItem(2, bauarbeiterItem);
         inv.setItem(3, farmerItem);
-        inv.setItem(4, schwimmerItem);
+        inv.setItem(4, CommingSoonItem);
 
         return inv;
     }

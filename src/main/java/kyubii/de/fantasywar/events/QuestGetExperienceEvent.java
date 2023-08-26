@@ -28,7 +28,6 @@ public class QuestGetExperienceEvent extends Event implements Cancellable {
     public boolean isReadyToLvlUp(){
         boolean b = false;
         if (quest.equalsIgnoreCase("Miner")){
-            Bukkit.broadcastMessage("juwhefkseaf");
             int expToLvlUp = getMinerExpToLvlUp(level);
             if (exp >= expToLvlUp){
                 b = true;
@@ -62,9 +61,7 @@ public class QuestGetExperienceEvent extends Event implements Cancellable {
     }
     public void LevelUp(){
         int lvl = level + 1;
-        QuestLevelUpEvent questLevelUpEvent = new QuestLevelUpEvent(player, lvl, quest, exp);
         utils.setLevel(player.getUniqueId(), quest, lvl);
-        Bukkit.getPluginManager().callEvent(questLevelUpEvent);
     }
     public int getExp(){
         return exp;
@@ -104,7 +101,7 @@ public class QuestGetExperienceEvent extends Event implements Cancellable {
         return lvl * 100;
     }
     private int getFarmerExpToLvlUp(int lvl){
-        return lvl * 70;
+        return lvl * 40;
     }
     private int getSchwimmerExpToLvlUp(int lvl){
         return lvl * 150;

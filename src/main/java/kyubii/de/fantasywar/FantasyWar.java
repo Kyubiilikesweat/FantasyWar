@@ -1,19 +1,20 @@
 package kyubii.de.fantasywar;
 
 import kyubii.de.fantasywar.commands.*;
-import kyubii.de.fantasywar.configs.QuestConfig;
+import kyubii.de.fantasywar.listeners.InventoryHandler;
 import kyubii.de.fantasywar.listeners.PlayerjoinHandler;
 import kyubii.de.fantasywar.listeners.QuestsHandler;
 import kyubii.de.fantasywar.utils.MySQLConnect;
 import kyubii.de.fantasywar.configs.WarpsConfig;
 import kyubii.de.fantasywar.utils.QuestMySQL;
 import kyubii.de.fantasywar.utils.WerbungMySQL;
+import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Bukkit;
+import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,9 +23,9 @@ Author - Kyubiilikesweat
  */
 public final class FantasyWar extends JavaPlugin {
     private static FantasyWar instance;
+    private static Economy econ = null;
     public static MySQLConnect mysql;
     private final WarpsConfig warpsConfig = new WarpsConfig();
-    private final QuestConfig questConfig = new QuestConfig();
     private static List<String> questsList = new ArrayList<>();
 
     @Override()
@@ -37,6 +38,9 @@ public final class FantasyWar extends JavaPlugin {
         createTable();
         loadCommands();
         loadListeners();
+        if (!setupEconomy()){
+            Bukkit.getConsoleSender().sendMessage("§cEs wurde kein Vault gefunden!");
+        }
         try {
             QuestMySQL.createQuestTable();
             WerbungMySQL.createWerbungTable();
@@ -51,6 +55,17 @@ public final class FantasyWar extends JavaPlugin {
     @Override
     public void onDisable() {
         Bukkit.getConsoleSender().sendMessage("§3§lFANTASYWAR-SYSTEM §7- §8Wurde §cdeaktiviert");
+    }
+    private boolean setupEconomy() {
+        if (getServer().getPluginManager().getPlugin("Vault") == null) {
+            return false;
+        }
+        RegisteredServiceProvider<Economy> rsp = getServer().getServicesManager().getRegistration(Economy.class);
+        if (rsp == null) {
+            return false;
+        }
+        econ = rsp.getProvider();
+        return true;
     }
 
     @SuppressWarnings("all")
@@ -67,6 +82,7 @@ public final class FantasyWar extends JavaPlugin {
         getCommand("Quest").setExecutor(new QuestCommand());
     }
     public void loadListeners() {
+        Bukkit.getPluginManager().registerEvents(new InventoryHandler(), this);
         Bukkit.getPluginManager().registerEvents(new PlayerjoinHandler(), this);
         Bukkit.getPluginManager().registerEvents(new QuestsHandler(), this);
     }
@@ -81,8 +97,6 @@ public final class FantasyWar extends JavaPlugin {
 
         warpsConfig.setUp();
         warpsConfig.save();
-        questConfig.setUp();
-        questConfig.save();
     }
     public void loadMySQL() {
         mysql = new MySQLConnect(
@@ -94,6 +108,7 @@ public final class FantasyWar extends JavaPlugin {
     }
 
     public static FantasyWar getInstance() {return instance;}
+    public static String getQuestPrefix(String quest){return "§3§l" + quest +" §8» §7";}
     public static String getSystemPrefix() {return "§3§lSYSTEM §8» §7";}
     public static String getNoPerm() {return "§3§lSYSTEM §8» §cDazu hast du keine Rechte!";}
     public static String getNoPlayer() {return "§3§lSYSTEM §8» §cDu musst ein Spieler sein!";}
@@ -124,15 +139,5 @@ public final class FantasyWar extends JavaPlugin {
             Bukkit.getConsoleSender().sendMessage("§cEs ist ein Fehler aufgetreten! Bitte kontaktiere einen Entwickler");
         }
     }
-
-    /*
-    Quest:
-    Miner
-    Laeufer
-    Farmer
-    Bauarbeiter
-    Schwimmer
-     */
-
 
 }

@@ -66,11 +66,11 @@ public class QuestMySQL {
             p.setInt(1, exp);
             p.execute();
             p.close();
-            QuestGetExperienceEvent questGetExperienceEvent = new QuestGetExperienceEvent(Bukkit.getPlayer(uuid), quest, exp, getLevel(uuid, quest));
-            Bukkit.getPluginManager().callEvent(questGetExperienceEvent);
         } catch (SQLException e){
             e.printStackTrace();
         }
+        QuestGetExperienceEvent questGetExperienceEvent = new QuestGetExperienceEvent(Bukkit.getPlayer(uuid), quest, exp, getLevel(uuid, quest));
+        Bukkit.getPluginManager().callEvent(questGetExperienceEvent);
     }
     public int getExperience(UUID uuid, String quest){
         try {
@@ -95,11 +95,11 @@ public class QuestMySQL {
             p.setInt(1, lvl);
             p.execute();
             p.close();
-            QuestLevelUpEvent questLevelUpEvent = new QuestLevelUpEvent(Bukkit.getPlayer(uuid), lvl, quest, getExperience(uuid, quest));
-            Bukkit.getPluginManager().callEvent(questLevelUpEvent);
         } catch (SQLException e){
             e.printStackTrace();
         }
+        QuestLevelUpEvent questLevelUpEvent = new QuestLevelUpEvent(Bukkit.getPlayer(uuid), lvl, quest, getExperience(uuid, quest));
+        Bukkit.getPluginManager().callEvent(questLevelUpEvent);
     }
     public int getLevel(UUID uuid, String quest){
         try {
