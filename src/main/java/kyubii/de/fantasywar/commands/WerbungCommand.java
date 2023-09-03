@@ -27,18 +27,23 @@ public class WerbungCommand implements CommandExecutor {
         insults.add("niger");
         insults.add("bastard");
         insults.add("nuttensohn");
-
     }
 
 
     @Override
     public boolean onCommand(@NotNull CommandSender commandSender, @NotNull Command command, @NotNull String s, @NotNull String[] strings) {
-        if (commandSender instanceof Player){
-            Player player = (Player) commandSender;
-
+        if (commandSender instanceof Player player){
             if (strings.length < 1){
                 player.sendMessage(FantasyWar.getSystemPrefix() + "Benutze §e/werbung §7[§9Werbung§7]");
                 return false;
+            }
+            try {
+                if (WerbungMySQL.getTime(player.getUniqueId()) >= 1){
+                    player.sendMessage( FantasyWar.getSystemPrefix() + "§cDu musst noch etwas warten bevor du erneut Werbung machst");
+                    return true;
+                }
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
             }
 
             /*for (String insult : insults){
@@ -51,14 +56,14 @@ public class WerbungCommand implements CommandExecutor {
             for (Player target : Bukkit.getOnlinePlayers()){
                 target.sendMessage("§8§m————§3 WERBUNG §8§m————");
                 target.sendMessage(" ");
-                target.sendMessage(String.join(" ", strings));
+                target.sendMessage("§7" + String.join(" ", strings).replaceAll("&", "§"));
                 target.sendMessage(" ");
                 target.sendMessage("§7Von: §3" + player.getName());
                 target.sendMessage("§8§m————§3 WERBUNG §8§m————");
             }
 
             try {
-                WerbungMySQL.addTime(player.getUniqueId(), 600000);
+                WerbungMySQL.addTime(player.getUniqueId(), 12000); //12000 = 10min
             } catch (SQLException e) {
                 e.printStackTrace();
             }

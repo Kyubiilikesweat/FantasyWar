@@ -20,16 +20,10 @@ public class QuestMySQL {
 
             String createTableSQL = "CREATE TABLE IF NOT EXISTS Quests (" +
                     "UUID VARCHAR(36) PRIMARY KEY," +
-                    "Miner INT DEFAULT 1," +
-                    "Laeufer INT DEFAULT 1," +
                     "Bauarbeiter INT DEFAULT 1," +
                     "Farmer INT DEFAULT 1," +
-                    "Schwimmer INT DEFAULT 1," +
-                    "CountMiner INT DEFAULT 0," +
-                    "CountLaeufer INT DEFAULT 0," +
                     "CountBauarbeiter INT DEFAULT 0," +
-                    "CountFarmer INT DEFAULT 0," +
-                    "CountSchwimmer INT DEFAULT 0" +
+                    "CountFarmer INT DEFAULT 0" +
                     ")";
             stmt.executeUpdate(createTableSQL);
         }

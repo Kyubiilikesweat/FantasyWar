@@ -68,6 +68,32 @@ public final class FantasyWar extends JavaPlugin {
         return true;
     }
 
+
+    public void loadMySQL() {
+        mysql = new MySQLConnect(
+                getConfig().getString("MySQL." + "host"),
+                getConfig().getInt("MySQL." + "port"),
+                getConfig().getString("MySQL." + "database"),
+                getConfig().getString("MySQL." + "user"),
+                getConfig().getString("MySQL." + "password"));
+    }
+    public static void createTable() {
+        try {
+            PreparedStatement st = mysql.getConnection().prepareStatement("CREATE TABLE IF NOT EXISTS playerinfo(player_uuid varchar(64))");
+            st.execute();
+            st.close();
+        } catch (SQLException e) {
+            Bukkit.getConsoleSender().sendMessage("§cEs ist ein Fehler aufgetreten! Bitte kontaktiere einen Entwickler");
+        }
+    }
+
+    public static FantasyWar getInstance() {return instance;}
+    public static String getQuestPrefix(String quest){return "§3§l" + quest +" §8» §7";}
+    public static String getSystemPrefix() {return "§3§lSYSTEM §8» §7";}
+    public static String getNoPerm() {return "§3§lSYSTEM §8» §cDazu hast du keine Rechte!";}
+    public static String getNoPlayer() {return "§3§lSYSTEM §8» §cDu musst ein Spieler sein!";}
+
+
     @SuppressWarnings("all")
     public void loadCommands() {
         getCommand("Sign").setExecutor(new SignCommand());
@@ -98,20 +124,6 @@ public final class FantasyWar extends JavaPlugin {
         warpsConfig.setUp();
         warpsConfig.save();
     }
-    public void loadMySQL() {
-        mysql = new MySQLConnect(
-                getConfig().getString("MySQL." + "host"),
-                getConfig().getInt("MySQL." + "port"),
-                getConfig().getString("MySQL." + "database"),
-                getConfig().getString("MySQL." + "user"),
-                getConfig().getString("MySQL." + "password"));
-    }
-
-    public static FantasyWar getInstance() {return instance;}
-    public static String getQuestPrefix(String quest){return "§3§l" + quest +" §8» §7";}
-    public static String getSystemPrefix() {return "§3§lSYSTEM §8» §7";}
-    public static String getNoPerm() {return "§3§lSYSTEM §8» §cDazu hast du keine Rechte!";}
-    public static String getNoPlayer() {return "§3§lSYSTEM §8» §cDu musst ein Spieler sein!";}
 
 
     /*
@@ -130,14 +142,6 @@ public final class FantasyWar extends JavaPlugin {
         return questsList;
     }
 
-    public static void createTable() {
-        try {
-            PreparedStatement st = mysql.getConnection().prepareStatement("CREATE TABLE IF NOT EXISTS playerinfo(player_uuid varchar(64))");
-            st.execute();
-            st.close();
-        } catch (SQLException e) {
-            Bukkit.getConsoleSender().sendMessage("§cEs ist ein Fehler aufgetreten! Bitte kontaktiere einen Entwickler");
-        }
-    }
+
 
 }

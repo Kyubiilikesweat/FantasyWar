@@ -6,7 +6,7 @@
 
     <groupId>de.fantasywar</groupId>
     <artifactId>FantasyWar</artifactId>
-    <version>1.6</version>
+    <version>1.6.3</version>
     <packaging>jar</packaging>
 
     <name>FantasyWar</name>
